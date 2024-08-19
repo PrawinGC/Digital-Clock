@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Digital Clock
+        </title>
+        <style>
+            body{
+                background-color: black;
+            }
+            .Clock{
+                position: absolute;
+                color: green;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                font-size: 60px;
+                font-family: Orbitron;
+
+            }
+            .image {
+                display: flex;
+                justify-content: center; /* Centers the image horizontally */
+                align-items: center;    /* Centers the image vertically */
+                height: 100vh;          /* Makes the container full height of the viewport */
+            }
+
+            .image img {
+                max-width: 100%;        /* Ensures the image scales with the container */
+                height: auto;           /* Maintains the aspect ratio of the image */
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div id="Digital Clock" class="Clock"></div>
+        <div class ="image">
+        <img src="image/image.png" alt="">
+        </div>
+        
+        <script type="text/javascript">
+        function showTime(){
+      
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = "AM";
+
+            if(h==0){
+                h = 12; //12 hour format
+            }
+            if (h>12){
+                h=h-12; // 12 hour format
+                session="PM";
+            }
+            if(h<10){ //0-9
+                h = "0"+h;
+            }
+            if(m<10){
+                m = "0" + m;
+            }
+            if(s<10){
+                s= "0"+s;
+            }
+
+            document.getElementById("Digital Clock").innerHTML = h + ":" + m + ":" +s + ":"+session;
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
+        </script>
+
+
+    </body>
+</html>
